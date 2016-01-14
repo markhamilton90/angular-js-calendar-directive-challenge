@@ -1,30 +1,48 @@
 
 angular.module('calendarDemoApp', [])
-	.controller('CalendarCtrl', function($scope, $element) {
-		//var month = $element.find("select")[0];
-		//var year = $element.find("select")[1];
+	.directive('monthAndYear', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'monthAndYear.html',
+			controller: function($scope) {
+				$scope.monthOptions = [
+					"January", "February", "March", "April", "May", "June", "July",
+					"August", "September", "October", "November", "December"
+				]
 
-		$scope.monthOptions = [
-			"January", "February", "March", "April", "May", "June", "July",
-			"August", "September", "October", "November", "December"
-		]
+				$scope.yearOptions = [];
+				for (var i = 1996; i < 2037; i++) {
+					$scope.yearOptions.push(i);
+				}
 
-		$scope.yearOptions = [];
-		for (var i = 1996; i < 2037; i++) {
-			$scope.yearOptions.push(i);
+				$scope.change = function() {
+					var month = $scope.confirmMonth;
+					month = $scope.monthOptions.indexOf(month);
+					var year = $scope.confirmYear;
+
+					console.log(month, year);
+
+					var date = new Date(year, month);
+					var monthlyRange = CalendarRange.getMonthlyRange(date);
+
+					return monthlyRange;
+					
+					console.log(monthlyRange.first);
+					console.log(monthlyRange.start);
+					console.log(monthlyRange.end);
+					console.log(monthlyRange.last);
+					console.log(monthlyRange.days);
+				}
+			}
 		}
-
-		$scope.change = function() {
-			console.log($scope.confirmMonth);
-		}
-
-		var ctrl = this;
 	})
 	.directive('calendar', function() {
 		return {
 			restrict: 'E',
+			require: "^monthAndYear",
 			templateUrl: 'calendar.html',
-			scope: true,
+
+			
 			
 		}
 	})

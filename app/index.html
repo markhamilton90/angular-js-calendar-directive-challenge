@@ -4,14 +4,11 @@
 <title>Calendar Directive Challenge</title>
 <link rel="stylesheet" type="text/css" href="./main.css" />
 </head>
-<body ng-controller="CalendarCtrl">
+<body>
 
 <!-- your code for nav and calendar directive instance here -->
 	<nav>
-		<select name="month" ng-init="confirmMonth = monthOptions[0]" ng-model="confirmMonth" ng-change="change()" ng-options="option for option in monthOptions">
-		</select>
-		<select name="year" ng-init="confirmYear = yearOptions[0]" ng-model="confirmYear" ng-change="change()" ng-options="option for option in yearOptions">
-		</select>
+		<month-and-year></month-and-year>
 	</nav>
 	<div class="calendar">
 		<ol>
