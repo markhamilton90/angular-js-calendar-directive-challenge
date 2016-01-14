@@ -1,1 +1,35 @@
 /* your css code goes here */
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+ol {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.calendar {
+	border-bottom: 1px solid #c6ced0;
+}
+
+.calendar li {
+	width: 14.2857143%;
+	height: 8em;
+	text-align: left;
+	display: inline-block;
+	border-top: 1px solid #c6ced0;
+	border-right: 1px solid #c6ced0;
+	padding-left: 4px;
+	padding-top: 3px;
+}

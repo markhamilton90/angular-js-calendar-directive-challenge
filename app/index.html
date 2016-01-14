@@ -4,9 +4,33 @@
 <title>Calendar Directive Challenge</title>
 <link rel="stylesheet" type="text/css" href="./main.css" />
 </head>
-<body>
+<body ng-controller="CalendarCtrl">
 
 <!-- your code for nav and calendar directive instance here -->
+	<nav>
+		<select name="month" ng-init="confirmMonth = monthOptions[0]" ng-model="confirmMonth" ng-change="change()" ng-options="option for option in monthOptions">
+		</select>
+		<select name="year" ng-init="confirmYear = yearOptions[0]" ng-model="confirmYear" ng-change="change()" ng-options="option for option in yearOptions">
+		</select>
+	</nav>
+	<div class="calendar">
+		<ol>
+			<li>1</li><!--
+			--><li>2</li><!--
+			--><li>3</li><!--
+			--><li>4</li><!--
+			--><li>5</li><!--
+			--><li>6</li><!--
+			--><li>7</li><!--
+			--><li>1</li><!--
+			--><li>2</li><!--
+			--><li>3</li><!--
+			--><li>4</li><!--
+			--><li>5</li><!--
+			--><li>6</li><!--
+			--><li>7</li>
+		</ol>
+	</div>
 
 <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="./utilities/calendar-range/calendarRange.js"></script>
