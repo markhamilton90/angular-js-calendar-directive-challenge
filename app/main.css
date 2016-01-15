@@ -19,6 +19,10 @@ ol {
 	margin: 0;
 }
 
+month-and-year {
+	
+}
+
 .calendar {
 	border-bottom: 1px solid #c6ced0;
 }
@@ -32,4 +36,8 @@ ol {
 	border-right: 1px solid #c6ced0;
 	padding-left: 4px;
 	padding-top: 3px;
+}
+
+.gray {
+	background-color: #eee;
 }

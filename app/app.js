@@ -5,6 +5,7 @@ angular.module('calendarDemoApp', [])
 			restrict: 'E',
 			templateUrl: 'monthAndYear.html',
 			controller: function($scope) {
+
 				$scope.monthOptions = [
 					"January", "February", "March", "April", "May", "June", "July",
 					"August", "September", "October", "November", "December"
@@ -20,18 +21,23 @@ angular.module('calendarDemoApp', [])
 					month = $scope.monthOptions.indexOf(month);
 					var year = $scope.confirmYear;
 
-					console.log(month, year);
-
 					var date = new Date(year, month);
 					var monthlyRange = CalendarRange.getMonthlyRange(date);
 
-					return monthlyRange;
-					
-					console.log(monthlyRange.first);
-					console.log(monthlyRange.start);
-					console.log(monthlyRange.end);
-					console.log(monthlyRange.last);
-					console.log(monthlyRange.days);
+					$scope.range = monthlyRange;
+					console.log($scope.range);
+					//console.log($scope.range.first);
+					//console.log($scope.range.start);
+					//console.log($scope.range.end);
+					//console.log($scope.range.last);
+
+				}
+
+				$scope.checkDay = function(day) {
+					if ($scope.range.start.getMonth() === day.date.getMonth()) {
+						return false;
+					}
+					return true;
 				}
 			}
 		}
@@ -41,8 +47,13 @@ angular.module('calendarDemoApp', [])
 			restrict: 'E',
 			require: "^monthAndYear",
 			templateUrl: 'calendar.html',
+			link: function(scope, element, attrs, ctrl) {
+				// change down here?
+				console.log(ctrl.monthlyRange);
 
-			
+
+
+			}		
 			
 		}
 	})
