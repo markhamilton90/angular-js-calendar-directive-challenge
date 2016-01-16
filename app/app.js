@@ -6,31 +6,37 @@ angular.module('calendarDemoApp', [])
 			templateUrl: 'monthAndYear.html',
 			controller: function($scope) {
 
+				var date = new Date();
+				var month = date.getMonth();
+				var year = date.getFullYear();
+				console.log(month, year);
+
 				$scope.monthOptions = [
 					"January", "February", "March", "April", "May", "June", "July",
 					"August", "September", "October", "November", "December"
 				]
 
 				$scope.yearOptions = [];
-				for (var i = 1996; i < 2037; i++) {
+				for (var i = (year - 20); i < (year + 20); i++) {
 					$scope.yearOptions.push(i);
 				}
 
-				$scope.change = function() {
-					var month = $scope.confirmMonth;
-					month = $scope.monthOptions.indexOf(month);
-					var year = $scope.confirmYear;
+				$scope.change = function(x, y) {
+					if (y) { // because January index for x evaluates to falsy
+						var month = x;
+						var year = y;
+					} else {
+						var month = $scope.confirmMonth;
+						month = $scope.monthOptions.indexOf(month);
+						var year = $scope.confirmYear;
+						console.log(month, year);
+					}
 
 					var date = new Date(year, month);
 					var monthlyRange = CalendarRange.getMonthlyRange(date);
 
 					$scope.range = monthlyRange;
 					console.log($scope.range);
-					//console.log($scope.range.first);
-					//console.log($scope.range.start);
-					//console.log($scope.range.end);
-					//console.log($scope.range.last);
-
 				}
 
 				$scope.checkDay = function(day) {
@@ -39,6 +45,8 @@ angular.module('calendarDemoApp', [])
 					}
 					return true;
 				}
+
+				$scope.change(month, year);
 			}
 		}
 	})

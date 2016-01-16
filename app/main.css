@@ -19,8 +19,14 @@ ol {
 	margin: 0;
 }
 
-month-and-year {
-	
+select {
+	font-size: 1.5em;
+}
+
+.nav-bar {
+	background-color: #373a36;
+	display: block;
+	padding: 5px 0 5px 10px;
 }
 
 .calendar {

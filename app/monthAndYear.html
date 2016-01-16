@@ -1,6 +1,7 @@
-
-<select name="month" ng-init="confirmMonth = monthOptions[0]" ng-model="confirmMonth" ng-change="change()" ng-options="option for option in monthOptions"></select>
-<select name="year" ng-init="confirmYear = yearOptions[0]" ng-model="confirmYear" ng-change="change()" ng-options="option for option in yearOptions"></select>
+<div class="nav-bar">
+	<select name="month" ng-init="confirmMonth = monthOptions[0]" ng-model="confirmMonth" ng-change="change()" ng-options="option for option in monthOptions"></select>
+	<select name="year" ng-init="confirmYear = yearOptions[20]" ng-model="confirmYear" ng-change="change()" ng-options="option for option in yearOptions"></select>	
+</div>
 <div class="calendar">
 	<ol>
 		<li ng-repeat="day in range.days" ng-class="{ gray: checkDay(day) }">{{ day.day }}</li><!---->
