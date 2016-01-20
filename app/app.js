@@ -1,15 +1,14 @@
 
 angular.module('calendarDemoApp', [])
-	.directive('monthAndYear', function() {
+	.directive('calendar', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'monthAndYear.html',
+			templateUrl: 'calendar.html',
 			controller: function($scope) {
 
 				var date = new Date();
 				var month = date.getMonth();
 				var year = date.getFullYear();
-				console.log(month, year);
 
 				$scope.monthOptions = [
 					"January", "February", "March", "April", "May", "June", "July",
@@ -22,21 +21,17 @@ angular.module('calendarDemoApp', [])
 				}
 
 				$scope.change = function(x, y) {
-					if (y) { // because January index for x evaluates to falsy
+					if (y) { // because January index for x (0) evaluates to falsy
 						var month = x;
 						var year = y;
 					} else {
 						var month = $scope.confirmMonth;
 						month = $scope.monthOptions.indexOf(month);
 						var year = $scope.confirmYear;
-						console.log(month, year);
 					}
-
 					var date = new Date(year, month);
 					var monthlyRange = CalendarRange.getMonthlyRange(date);
-
 					$scope.range = monthlyRange;
-					console.log($scope.range);
 				}
 
 				$scope.checkDay = function(day) {
@@ -49,19 +44,4 @@ angular.module('calendarDemoApp', [])
 				$scope.change(month, year);
 			}
 		}
-	})
-	.directive('calendar', function() {
-		return {
-			restrict: 'E',
-			require: "^monthAndYear",
-			templateUrl: 'calendar.html',
-			link: function(scope, element, attrs, ctrl) {
-				// change down here?
-				console.log(ctrl.monthlyRange);
-
-
-
-			}		
-			
-		}
-	})
+	});
